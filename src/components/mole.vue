@@ -124,14 +124,14 @@ export default {
       document.getElementById(
         "bg"
       ).style.cssText = `cursor:url(${cursor}), default;width:${this
-        .cardRow * 300}px;height:${this.cardColumn * 300}px;`;
+        .cardColumn * 300}px;height:${this.cardRow * 300}px;`;
     },
     //鼠标抬起在游戏页面里
     bgmouseUp() {
       document.getElementById(
         "bg"
-      ).style.cssText = `cursor:url(${cursorDown}), default;width:${this.cardRow *
-        300}px;height:${this.cardColumn * 300}px;`;
+      ).style.cssText = `cursor:url(${cursorDown}), default;width:${this.cardColumn *
+        300}px;height:${this.cardRow * 300}px;`;
     }
   },
   computed: {
