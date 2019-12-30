@@ -180,11 +180,16 @@ export default {
     }
   },
   created() {
+    //生成地图
     this.buildArr();
+    //初始出生位置
     this.snakerArr.push({ row: Math.floor(this.row / 2), column: 0 });
+    //画
     this.allArr[Math.floor(this.row / 2)][0].showBlack = true;
+    //生成食物
     this.getRandomNumber();
     let that = this;
+    //监听按键
     document.onkeydown = function(e) {
       let key = window.event.keyCode;
       let direction = "";
@@ -197,16 +202,10 @@ export default {
       } else if (key == 40) {
         that.newDirection = "下";
       }
-      console.log(!that.timer, "????");
       if (!that.timer) {
         that.snakerLiveState = "live";
-        console.log(that.newDirection, "只走一次");
         that.timer = setInterval(
           function(that) {
-            // //首先生成食物（在页面上没有食物的时候生成食物）
-            // if (!that.food.row) {
-            //   that.getRandomNumber();
-            // }
             //蛇按照指定方向移动1格
             //预计要走到的坐标（最最初略的计算，哪怕是负数也算出来，后边处理）
             let headProphesy = that.makeHeadProphesy(that.newDirection);
@@ -219,7 +218,9 @@ export default {
                 headProphesy.row == that.food.row &&
                 headProphesy.column == that.food.column
               ) {
+                //在蛇的数组的第一位新增当前坐标为蛇的新头
                 that.snakerArr.splice(0, 0, headProphesy);
+                //画
                 that.allArr[headProphesy.row][
                   headProphesy.column
                 ].showBlack = true;
@@ -228,11 +229,7 @@ export default {
               } else {
                 //如果没吃到食物，就正常行进
                 that.snakerArr.splice(0, 0, headProphesy);
-                console.log(
-                  JSON.parse(JSON.stringify(that.snakerArr)),
-                  "???",
-                  "第一次跑这里了啊？"
-                );
+                //蛇前进一格，尾巴要掉一格
                 that.allArr[headProphesy.row][
                   headProphesy.column
                 ].showBlack = true;
@@ -278,7 +275,6 @@ export default {
         );
       }
     };
-    console.log(this.allArr);
   }
 };
 </script>
