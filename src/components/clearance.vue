@@ -171,6 +171,7 @@ export default {
     again() {
       //造二位数组
       this.buildArr();
+      this.mineNumber = 0;
       while (this.mineNumber < this.mine) {
         this.getRandomNumber();
       }
@@ -180,6 +181,7 @@ export default {
           item1.nearby = this.computedMine(index, index2);
         });
       });
+      console.log(this.allArr)
     },
     chouse(row, column) {
       if (
