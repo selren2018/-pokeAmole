@@ -3,6 +3,7 @@
     <ul style="width:80px">
       <li @click="jumpPokeAmole" style="cursor:pointer">打地鼠</li>
       <li @click="jumpRetroSnaker" style="cursor:pointer">贪吃蛇</li>
+      <li @click="jumpMineClearance" style="cursor:pointer">扫雷</li>
     </ul>
   </div>
 </template>
@@ -23,6 +24,9 @@ export default {
     },
     jumpRetroSnaker() {
       this.$router.push("retroSnaker");
+    },
+    jumpMineClearance(){
+      this.$router.push("mineClearance");
     }
   }
 };

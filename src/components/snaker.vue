@@ -18,7 +18,6 @@
 </template>
 <script>
 export default {
-  name: "HelloWorld",
   props: {
     //有几行
     row: {
@@ -75,9 +74,6 @@ export default {
         }
       }
     },
-    kankan(data) {
-      console.log(data);
-    },
     //生成随机数
     getRandomNumber() {
       let getRandomNumber = {
@@ -96,7 +92,6 @@ export default {
     },
     //判断边界值情况(这次操作是否为有效操作)
     judgeBoundary(data) {
-      console.log(data);
       let row = data.row;
       let column = data.column;
       //如果撞到边界蛇会死
@@ -110,7 +105,6 @@ export default {
           this.snakerArr[1].row == data.row &&
           this.snakerArr[1].column == data.column
         ) {
-          console.log("相反方向");
           return false;
         }
       }
@@ -239,7 +233,6 @@ export default {
                 that.snakerArr.splice(that.snakerArr.length - 1, 1);
               }
             } else {
-              console.log("走到这里了，相反的操作");
               //此次为无效操作，或者为致死操作,这里只考虑无效操作的情况，致死操作直接交给监听解决。如果是无效操作，那么蛇的行进方向不变
               let newheadProphesy = that.makeHeadProphesy(that.direction);
               //如果蛇没死
@@ -256,7 +249,6 @@ export default {
                   //生成新的食物
                   that.getRandomNumber();
                 } else {
-                  console.log(headProphesy, "???", "第二次跑这里了啊？");
                   //如果没吃到食物，就正常行进
                   that.snakerArr.splice(0, 0, newheadProphesy);
                   that.allArr[newheadProphesy.row][
